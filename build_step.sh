@@ -6,4 +6,4 @@ echo "Build script"
 chmod 5 build_step.sh
 
 npm install
-npm build
+npm run build
