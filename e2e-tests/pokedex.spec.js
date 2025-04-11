@@ -16,8 +16,8 @@ describe('Pokedex', () => {
     await expect(page.getByText('chlorophyll')).toBeVisible()
   })
 
-  test('GET /health should return 200', async ({ page }) => {
-    const res = await page.request.get('/health')
-    await expect(res).toBeOK()
+  test('GET /health should return "ok"', async ({ page }) => {
+    await page.goto('/health')
+    await expect(page.getByText(/^ok$/)).toBeVisible()
   })
 })
