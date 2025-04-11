@@ -15,4 +15,9 @@ describe('Pokedex', () => {
     await page.getByRole('link', { name: 'ivysaur' }).click()
     await expect(page.getByText('chlorophyll')).toBeVisible()
   })
+
+  test('GET /health should return 200', async ({ page }) => {
+    const res = await page.goto('/health')
+    expect(res.status()).toBe(200)
+  })
 })

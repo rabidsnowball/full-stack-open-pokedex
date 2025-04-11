@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    if: ${{ contains(github.event.head_commit.message, '[use outside action]') }}
+    if: ${{ contains(github.event.head_commit.message, '[use outside action]') && success() }}
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to production
