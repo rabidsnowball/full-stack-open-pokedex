@@ -13,7 +13,8 @@ import { defineConfig, devices } from '@playwright/test'
  * @see https://playwright.dev/docs/test-configuration
  */
 
-const PORT = 8080
+const PORT = process.env.PORT || 5000
+//8080
 
 export default defineConfig({
   testDir: './e2e-tests',
@@ -75,8 +76,9 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
+  // OR run it on production build
   webServer: {
-    command: 'npm run start',
+    command: 'npm run start-prod',
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,
     // timeout: 120 * 1000,

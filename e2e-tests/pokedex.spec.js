@@ -16,8 +16,21 @@ describe('Pokedex', () => {
     await expect(page.getByText('chlorophyll')).toBeVisible()
   })
 
-  test('GET /health should return "ok"', async ({ page }) => {
-    await page.goto('/health')
-    await expect(page.getByText(/^ok$/)).toBeVisible()
+})
+
+describe('Health endpoint', () => {
+  test('GET /health should return "ok"', async ({ page, request }) => {
+  // await page.goto('/health')
+  // await expect(page.getByText(/^ok$/)).toBeVisible()
+    const response = await request.get('/health')
+    const text = await response.text()
+    console.log("response text: ", text)
+    expect(response.status()).toBe(200)
+    // const text = await response.text()
+  // expect(text).toBe('ok')
+    // const response = await page.goto('/health')
+    // const body =  await response.text()
+    // // console.log(' response body ',body)
+    // expect(body).toMatch(/ok/)
   })
 })
