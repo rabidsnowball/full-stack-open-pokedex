@@ -19,12 +19,12 @@ describe('Pokedex', () => {
 })
 
 describe('Health endpoint', () => {
-  test('GET /health should return "ok"', async ({ page, request }) => {
+  test('GET /health should return "ok"', async ({ request }) => {
   // await page.goto('/health')
   // await expect(page.getByText(/^ok$/)).toBeVisible()
     const response = await request.get('/health')
-    const text = await response.text()
-    console.log("response text: ", text)
+    // const text = await response.text()
+    // console.log("response text: ", text)
     expect(response.status()).toBe(200)
     // const text = await response.text()
   // expect(text).toBe('ok')
