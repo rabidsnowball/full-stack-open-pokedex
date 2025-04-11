@@ -17,7 +17,7 @@ describe('Pokedex', () => {
   })
 
   test('GET /health should return 200', async ({ page }) => {
-    const res = await page.goto('/health')
-    expect(res.status()).toBe(200)
+    const res = await page.request.get('/health')
+    await expect(res).toBeOK()
   })
 })
