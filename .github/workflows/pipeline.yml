@@ -5,7 +5,7 @@ on:
     branches:
       - main
   pull_request:
-    branches: [ main, master ]
+    branches: main
 
 jobs:
   simple_deployment_pipeline:
@@ -20,8 +20,7 @@ jobs:
       - name: Check style
         run: npm run eslint
       - run: npm run build
-      - run: npm run test
-
+      - run: npm run test 
       - name: e2e tests - Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
@@ -33,12 +32,24 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report/
-          retention-days: 30  
+          retention-days: 30
       - name: Trigger deployment
-        if: ${{ success() }}
+        # if: ${{ success() }}
         run: curl ${{ secrets.MY_RENDER_HOOK }}
       - name: Confirm deployment triggered
-        if: ${{ success() }}
+        # if: ${{ success() }}
         run: |
-          echo "Using deploy hook"
+          echo "Using deploy hook"  
+    
+  # deploy:
+  #   runs-on: ubuntu-20.04
+  #   needs: simple_deployment_pipeline
+  #   steps:   
+  #     - name: Trigger deployment
+  #       if: ${{ success() }}
+  #       run: curl ${{ secrets.MY_RENDER_HOOK }}
+  #     - name: Confirm deployment triggered
+  #       if: ${{ success() }}
+  #       run: |
+  #         echo "Using deploy hook"
   
