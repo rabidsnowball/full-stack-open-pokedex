@@ -18,19 +18,19 @@ describe('Pokedex', () => {
 
 })
 
-describe('Health endpoint', () => {
-  test('GET /health should return "ok"', async ({ request }) => {
-  // await page.goto('/health')
-  // await expect(page.getByText(/^ok$/)).toBeVisible()
-    const response = await request.get('/health')
-    // const text = await response.text()
-    // console.log("response text: ", text)
-    expect(response.status()).toBe(200)
-    // const text = await response.text()
-  // expect(text).toBe('ok')
-    // const response = await page.goto('/health')
-    // const body =  await response.text()
-    // // console.log(' response body ',body)
-    // expect(body).toMatch(/ok/)
-  })
-})
+// describe('Health endpoint', () => {
+//   test('GET /health should return "ok"', async ({ request }) => {
+//   // await page.goto('/health')
+//   // await expect(page.getByText(/^ok$/)).toBeVisible()
+//     const response = await request.get('/health')
+//     // const text = await response.text()
+//     // console.log("response text: ", text)
+//     expect(response.status()).toBe(200)
+//     // const text = await response.text()
+//   // expect(text).toBe('ok')
+//     // const response = await page.goto('/health')
+//     // const body =  await response.text()
+//     // // console.log(' response body ',body)
+//     // expect(body).toMatch(/ok/)
+//   })
+// })
