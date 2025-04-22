@@ -5,8 +5,8 @@ on:
     branches:
       - main
   pull_request:
-    branches: 
-      - main
+    branches: [main]
+    types: [opened, synchronize]
 
 jobs:
   simple_deployment_pipeline:
@@ -36,9 +36,12 @@ jobs:
           retention-days: 30
       - name: Trigger deployment
         # if: ${{ success() }}
+        # pull_request is merged/pushed if you confirm the PR
+        if: ${{ github.event_name == 'push' }}
         run: curl ${{ secrets.MY_RENDER_HOOK }}
       - name: Confirm deployment triggered
         # if: ${{ success() }}
+        if: ${{ github.event_name == 'push' }}
         run: |
           echo "Using deploy hook"  
     
